@@ -1,0 +1,41 @@
+<div class="row">
+	<div class="col-lg-offset-1 col-lg-3">
+		<p>
+			<a href="{{create_link}}" class="btn btn-sm btn-success"><i class="icon-pencil"></i> Create message</a>
+		</p>
+		<div class="list-group">
+			{{#messages}}
+			<a href="{{link}}" class="list-group-item{{#active}} active{{/active}}">
+				{{#unread}}<span class="badge">{{total}}</span>{{/unread}}
+				{{#read}}<span class="icon-reply pull-right"></span>{{/read}}
+				{{&title}}
+			</a>
+			{{/messages}}
+			{{^messages}}
+				<div class="list-group-item text-muted text-center"> <i>- no messages -</i></div>
+			{{/messages}}
+		</div>
+	</div>
+	<div class="col-lg-7">
+		<div id="message-content" class="private-messages" data-active="{{active_message}}">
+		{{#replies}}
+			{{> message_post}}
+		{{/replies}}
+		{{^replies}}
+			<p class="text-center text-muted" style="padding-top: 45px"><i> - No message selected -</i></p>
+		{{/replies}}
+		</div>
+		<hr>
+		{{#active_message}}
+		<form action="{{reply_link}}" method="post">
+			<input type="hidden" name="csrf" value="{{csrf}}" />
+			<div class="form-group col-lg-offset-2 col-lg-7">
+				<textarea name="content" class="form-control" rows="3"></textarea>
+			</div>
+			<div class="form-group col-lg-0" style="padding-top: 10px;">
+				<button type="submit" class="btn btn-primary btn-lg" title="Reply"><i class="icon-share"></i></button>
+			</div>
+		</form>
+		{{/active_message}}
+	</div>
+</div>

@@ -1,0 +1,49 @@
+.private-messages {
+	padding-right: 10px;
+	height: 400px;
+	overflow: hidden;
+}
+.private-messages .media .media-object {
+	position: relative;
+}
+.private-messages .media .media-object.pull-left:after {
+	display: block;
+	width: 0;
+	height: 0;
+	border-top: 8px solid transparent;
+	border-bottom: 8px solid transparent;
+	border-right: 8px solid #1cabf0;
+	position: absolute;
+	right: -11px;
+	top: 12px;
+	content: "";
+	clear: both;
+}
+.private-messages .media .media-object.pull-right:after {
+	display: block;
+	width: 0;
+	height: 0;
+	border-top: 8px solid transparent;
+	border-bottom: 8px solid transparent;
+	border-left: 8px solid #1cabf0;
+	position: absolute;
+	left: -11px;
+	top: 12px;
+	content: "";
+	clear: both;
+}
+.private-messages .media .media-body {
+	background: #fafafa;
+	-webkit-border-radius: 2px 2px 2px 2px;
+	-moz-border-radius: 2px 2px 2px 2px;
+	border-radius: 2px 2px 2px 2px;
+	padding: 10px 25px;
+	border-left: 3px solid #1cabf0;
+	box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.3), inset -1px -1px 1px rgba(0, 0, 0, 0.05);
+	-moz-box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.3), inset -1px -1px 1px rgba(0, 0, 0, 0.05);
+	-webkit-box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.3), inset -1px -1px 1px rgba(0, 0, 0, 0.05);
+}
+.private-messages .media .media-body.right {
+	border-left: none;
+	border-right: 3px solid #1cabf0;
+}

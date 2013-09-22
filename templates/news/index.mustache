@@ -1,0 +1,24 @@
+{{#posts}}
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">{{title}}</div>
+  <div class="panel-body">
+    {{&content}}
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item">
+
+        <span class="pull-right">
+            <a href="{{comment_route}}" class="news-comments" data-id="{{id}}">
+                {{replies}} comments
+            </a>
+        </span>
+        <i>{{date}}</i>
+    </li>
+  </ul>
+</div>
+{{/posts}}
+
+<div class="text-center">
+	{{&pagination}}
+</div>

@@ -1,0 +1,66 @@
+<div class="row">
+	<div class="col-lg-8 col-lg-offset-2">
+		{{&breadcrumb}}
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-8 col-lg-offset-2">
+		<div class="panel panel-primary">
+			<!-- Default panel contents -->
+			<div class="panel-heading">Edit topic</div>
+			<div class="panel-body">
+				<form action="{{submit_link}}" method="post" class="form-horizontal">
+					<input type="hidden" name="csrf" value="{{csrf}}" />
+					<div class="form-group">
+						<label for="input-topic-title" class="col-lg-2 control-label">Title</label>
+						<div class="col-lg-5">
+							<input type="text" name="title" id="input-topic-title" class="form-control" value="{{topic.title}}" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="input-topic-content" class="col-lg-2 control-label">Content</label>
+						<div class="col-lg-8">
+							<textarea name="content" id="input-topic-content" class="form-control" rows="5">{{topic.content}}</textarea>
+						</div>
+					</div>
+					{{#can_sticky}}
+					<div class="form-group">
+						<div class=" col-lg-2 text-right"><label class="control-label">Type</label></div>
+						<div class="col-lg-8">
+							<div class="radio-inline">
+								<label>
+									<input type="radio" name="stickied" id="optionsRadios1" value="0"{{^topic.stickied}} checked{{/topic.stickied}}>
+									Normal
+								</label>
+							</div>
+							<div class="radio-inline">
+								<label>
+									<input type="radio" name="stickied" id="optionsRadios2" value="1"{{#topic.stickied}} checked{{/topic.stickied}}>
+									Stickied
+								</label>
+							</div>
+						</div>
+					</div>
+					{{/can_sticky}}
+					{{#change_status}}
+					<div class="form-group">
+						<label for="input-topic-status" class="col-lg-2 control-label">Status</label>
+						<div class="col-lg-8">
+							<select name="status" id="input-topic-status">
+								{{#options}}
+								<option value="{{value}}"{{#selected}} selected{{/selected}}>{{title}}</option>
+								{{/options}}
+							</select>
+						</div>
+					</div>
+					{{/change_status}}
+					<div class="form-group">
+						<div class="col-lg-8 col-lg-offset-2">
+							<input type="submit" value="Update" class="btn btn-success">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

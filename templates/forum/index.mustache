@@ -1,0 +1,33 @@
+<div class="row">
+	<div class="col-lg-8 col-lg-offset-2">
+		{{&breadcrumb}}
+	</div>
+</div>
+{{#locations}}
+<div class="row">
+	<div class="col-lg-8 col-lg-offset-2">
+		<div class="panel panel-primary">
+			<!-- Default panel contents -->
+			<div class="panel-heading">{{title}}</div>
+			<table class="table">
+			<thead>
+				<tr>
+					<th class="col-lg-2">Title</th>
+					<th class="col-lg-3">Description</th>
+					<th class="col-lg-1 text-center">#</th>
+					<th class="col-lg-3">Last post</th>
+				</tr>
+			</thead>
+			{{#categories}}
+				<tr data-id="{{id}}">
+					<td><a href="{{link}}">{{title}}</a></td>
+					<td><a href="{{link}}">{{description}}</a></td>
+					<td class="text-center"><a href="{{link}}">{{topics}}</a></td>
+					<td>{{&last_topic}}</td>
+				</tr>
+			{{/categories}}
+			</table>
+		</div>
+	</div>
+</div>
+{{/locations}}

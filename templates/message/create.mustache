@@ -1,0 +1,43 @@
+<div class="row">
+	<div class="col-lg-offset-1 col-lg-3">
+		<p>
+			<a href="{{create_link}}" class="btn btn-sm btn-success"><i class="icon-pencil"></i> Create message</a>
+		</p>
+		<div class="list-group">
+			{{#messages}}
+			<a href="{{link}}" class="list-group-item{{#active}} active{{/active}}">
+				{{#unread}}<span class="badge">{{total}}</span>{{/unread}}
+				{{#read}}<span class="icon-reply pull-right"></span>{{/read}}
+				{{&title}}
+			</a>
+			{{/messages}}
+			{{^messages}}
+				<div class="list-group-item text-muted text-center"> <i>- no messages -</i></div>
+			{{/messages}}
+		</div>
+	</div>
+	<div class="col-lg-7">
+		<div id="message-content" class="private-messages" data-active="">
+		<form action="{{post_link}}" method="post" class="form-horizontal">
+			<input type="hidden" name="csrf" value="{{csrf}}" />
+			<div class="form-group col-lg-offset-2">
+				<label for="input-username" class="control-label col-lg-2">User</label>
+				<div class="col-lg-7">
+					<input type="text" id="input-username" name="username" class="form-control" value="{{username}}" />
+				</div>
+			</div>
+			<div class="form-group col-lg-offset-2">
+				<label for="input-content" class="control-label col-lg-2">Content</label>
+				<div class="col-lg-7">
+					<textarea id="input-content" name="content" class="form-control" rows="3"></textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-lg-offset-2 col-lg-10">
+					<button type="submit" class="btn btn-primary" title="Reply"><i class="icon-share-alt"></i> Send</button>
+				</div>
+			</div>
+		</form>
+		</div>
+	</div>
+</div>

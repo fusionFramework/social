@@ -1,0 +1,49 @@
+<div class="row">
+	<div class="col-lg-8 col-lg-offset-2">
+		{{&breadcrumb}}
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-8 col-lg-offset-2">
+		<div class="panel panel-primary">
+			<!-- Default panel contents -->
+			<div class="panel-heading">Category</div>
+			<table class="table table-hover">
+			<thead>
+				<tr>
+					<th style="width: 20px;"></th>
+					<th class="col-lg-4">Title</th>
+					<th class="col-lg-3">Author</th>
+					<th class="col-lg-1 text-center">#</th>
+					<th class="col-lg-0">Last post by</th>
+				</tr>
+			</thead>
+			{{#topics}}
+				<tr data-id="{{id}}">
+					<td><i{{#sticky}} class="icon-exclamation-sign"{{/sticky}}{{^sticky}}{{#archived}} class="icon-minus-sign"{{/archived}}{{/sticky}}></i></td>
+					<td><a href="{{link}}">{{title}}</a></td>
+					<td><a href="{{link}}"><i class="muted">{{author}}</i></a></td>
+					<td class="text-center"><a href="{{link}}">{{replies}}</a></td>
+					<td><i>{{user}}</i></td>
+				</tr>
+			{{/topics}}
+			</table>
+			<div class="panel-footer">
+				<div class="row">
+					<div class="col-lg-4" style="margin-top: -20px; margin-bottom: -25px">
+						{{&pagination}}
+						&nbsp;
+					</div>
+					<div class="col-lg-0 text-right">
+						{{#logged_in}}
+							<a href="{{create_topic}}" id="forum-topic-create" class="btn btn-success btn-sm" style="margin-top: -5px;">
+								<i class="icon-plus-sign"></i> Create topic
+							</a>&nbsp;
+						{{/logged_in}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
