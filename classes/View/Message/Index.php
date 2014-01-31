@@ -76,13 +76,15 @@ class View_Message_Index extends Views {
 		{
 			foreach($this->replies as $reply)
 			{
+				Plug::fire('msg.render', [$reply]);
+
 				$replies[] = array(
-					'avatar' => $reply->sender->avatar(),
+					'avatar' => $reply->sender->avatar_img(),
 					'profile_link' => Route::url('user.profile', array('id' => $reply->sender_id)),
 					'username' => $reply->sender->username,
 					'time' => $reply->created_at,
 					'formatted_time' => Fusion::date($reply->created_at),
-					'content' => nl2br($reply->content),
+					'content' => $reply->content,
 					'orientation' => ($this->role == 'sender' && $reply->sender_id == Fusion::$user->id) ? 'left' : 'right'
 				);
 			}

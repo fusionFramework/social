@@ -1,0 +1,24 @@
+{
+	"name"       :"fusionFramework/social",
+	"description":"fusionFramework's social package",
+	"type"       :"fusionFramework",
+	"homepage"   :"https://github.com/fusionFramework/social",
+	"license"    :"MIT",
+	"authors"    :[
+		{
+			"name"    :"Maxim Kerstens",
+			"email"   :"maxim.kerstens@gmail.com",
+			"role"    :"Project maintainer"
+		}
+	],
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "http://ktt-happydemon.rhcloud.com"
+		}
+	],
+	"require": {
+		"fusionFramework/app": "*",
+		"happydemon/quill": "*"
+	}
+}

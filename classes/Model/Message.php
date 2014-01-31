@@ -2,10 +2,10 @@
 /**
  * Message model
  *
- * @package
- * @author     Maxim Kerstens 'happyDemon'
- * @copyright  (c) 2013 Maxim Kerstens
- * @license    MIT
+ * @package    fusionFramework/social
+ * @category   Model
+ * @author     Maxim Kerstens
+ * @copyright  (c) happydemon.org
  */
 class Model_Message extends ORM {
 
@@ -45,6 +45,15 @@ class Model_Message extends ORM {
 		);
 	}
 
+	/**
+	 * Create a new message.
+	 *
+	 * @param            $content
+	 * @param Model_User $receiver
+	 * @param Model_User $sender
+	 *
+	 * @return Model_Message
+	 */
 	public function post($content, Model_User $receiver, Model_User $sender=null)
 	{
 		if($sender == null)
@@ -77,11 +86,17 @@ class Model_Message extends ORM {
 			':other_username' => $receiver->username,
 			':other_user_id' => $receiver->id,
 		))
-		->notify($receiver, 'mail');
+		->notify($receiver, 'mail.message', ['message_id' => $this->id]);
 
 		return $this;
 	}
 
+	/**
+	 * Read a message.
+	 *
+	 * @param string $role
+	 * @return Model_Message
+	 */
 	public function read($role='sender')
 	{
 		if($this->get('unread_'.$role) > 0)
@@ -103,6 +118,12 @@ class Model_Message extends ORM {
 		return $this;
 	}
 
+	/**
+	 * Reply to a message.
+	 *
+	 * @param      $content
+	 * @param null $sender
+	 */
 	public function reply($content, $sender=null)
 	{
 		if($sender == null)
@@ -126,12 +147,13 @@ class Model_Message extends ORM {
 
 		// Log the fact that a user created a new reply and notify the receiver
 		Fusion::$log->create('message.reply', 'social', '<b>:username</b> replied in a discussion to <i>:other_username</i>', array(
+			'alias_id' => $post->id,
 			':user' => $sender->id,
 			':username' => $sender->username,
 			':other_username' => $this->{$other_user_role}->username,
 			':other_user_id' => $this->{$other_user_role}->id,
 		))
-		->notify($this->{$other_user_role}, 'mail');
+		->notify($this->{$other_user_role}, 'mail.reply');
 	}
 
 } // End Message model

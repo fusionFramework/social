@@ -36,6 +36,8 @@ class View_News_Post extends Views {
 		{
 			foreach($this->replies as $reply)
 			{
+				Plug::listen('news.render', [$reply]);
+
 				$replies[] = array(
 					'date' => $reply->created_at,
 					'content' => nl2br($reply->content),

@@ -1,0 +1,36 @@
+{{#messages}}
+<div class="row">
+	{{#sender}}
+	<div class="col-sm-1 col-sm-offset-1"><i class="fa fa-user fa-2x"></i> </div>
+	{{/sender}}
+	<div class="col-sm-10">
+		<div class="row">{{content}}</div>
+		<div class="row">
+			<div class="col-lg-2"><i class="fa fa-{{#read}}eye{{/read}}{{^read}}eye-slash{{/read}}"></i></div>
+			<div class="col-sm-6"><small class="text-center">{{date}}</small></div>
+			<div class="col-sm-3">
+				{{#has_log}}
+				<div class="btn-group">
+					<button type="button" class="btn btn-danger"><i class="fa fa-info-circle"></i></button>
+					<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+						<span class="caret"></span>
+						<span class="sr-only">Toggle Dropdown</span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="#" class="nolink">{{log.ip}}</a></li>
+						<li><a href="#" class="nolink">{{log.agent}}</a></li>
+					</ul>
+				</div>
+				{{/has_log}}
+			</div>
+		</div>
+	</div>
+	{{^sender}}
+	<div class="col-sm-2"><i class="fa fa-user fa-2x"></i> </div>
+	{{/sender}}
+</div>
+{{/messages}}
+
+{{#has_next_page}}
+<a href="{{next_page}}">next page</a>
+{{/has_next_page}}

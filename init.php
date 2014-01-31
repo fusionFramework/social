@@ -29,6 +29,7 @@ Route::set('forum', 'forum')
 		'action'     => 'index'
 	)
 );
+
 Route::set('forum.category', 'forum/<id>(/<page>)', array('page' => '([0-9]*)', 'id' => '([0-9]*)'))
 	->defaults(array(
 		'controller' => 'Forums',
@@ -131,3 +132,30 @@ Route::set('message.reply', 'messages/<id>/reply', array('id' => '([0-9]*)'))
 		'action'     => 'reply'
 	)
 );
+
+Route::set('admin.user.tab.pc.fill', 'admin/user/tab/pc/fill(/<id>)', array('id' => '([0-9]+)'))
+	->defaults(array(
+			'controller' => 'Admin_Tab_Social',
+			'action'     => 'pc_fill',
+		)
+	);
+Route::set('admin.user.tab.pc.js', 'admin/user/tab/pc.js')
+	->defaults(array(
+			'controller' => 'Admin_Tab_Social',
+			'action'     => 'pc_js',
+		)
+	);
+Route::set('admin.user.tab.pc.modal', 'admin/user/tab/pc/modal/<id>(/<page>(/<user_id>))', array('id' => '([0-9]+)','user_id' => '([0-9]+)', 'page' => '([0-9]+)'))
+	->defaults(array(
+			'controller' => 'Admin_Tab_Social',
+			'action'     => 'pc_modal',
+			'page'       => 0,
+			'user_id'    => 0
+		)
+	);
+Route::set('admin.user.tab.pc.message', 'admin/user/tab/pc/message/<id>', array('id' => '([0-9]+)'))
+	->defaults(array(
+			'controller' => 'Admin_Tab_Social',
+			'action'     => 'pc_message'
+		)
+	);

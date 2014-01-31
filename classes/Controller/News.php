@@ -8,6 +8,7 @@ class Controller_News extends Controller_Fusion_Site {
 		$this->_tpl = new View_News_Index;
 
 		$posts = Quill::factory('news')->topics(false, null, false)
+			->where('quill_topic.status', '=', 'active')
 			->order_by('quill_topic.id', 'DESC');
 
 		$paginate = Paginate::factory($posts, Kohana::$config->load('news.posts'))->execute();
@@ -57,6 +58,8 @@ class Controller_News extends Controller_Fusion_Site {
 				->where('quill_topic.id', '=', $this->request->param('id'))
 				->find()
 				->create_reply($values);
+
+			Plug::listen('news.parse', [$values['content'], $this->request->param('id')]);
 
 			RD::set(RD::SUCCESS, 'Thanks for creating a comment');
 		}

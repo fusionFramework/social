@@ -2,10 +2,10 @@
 /**
  * Message_Post model
  *
- * @package
- * @author     Maxim Kerstens 'happyDemon'
- * @copyright  (c) 2013 Maxim Kerstens
- * @license    MIT
+ * @package    fusionFramework/social
+ * @category   Model
+ * @author     Maxim Kerstens
+ * @copyright  (c) happydemon.org
  */
 class Model_Message_Post extends ORM {
 

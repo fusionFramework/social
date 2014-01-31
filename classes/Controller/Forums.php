@@ -28,6 +28,12 @@ class Controller_Forums extends Controller_Fusion_Site {
 		{
 			try {
 				$this->_category = Quill::factory($category);
+
+				if($this->_breadcrumb != null)
+				{
+					$this->_breadcrumb->get_item('forum.category')
+						->param('id', $this->_category->id);
+				}
 			}
 			catch(Quill_Exception_Category_Load $e)
 			{
@@ -55,6 +61,10 @@ class Controller_Forums extends Controller_Fusion_Site {
 			//Set the topic's name in the breadcrumb
 			if($this->_tpl->topic != null)
 			{
+				$this->_breadcrumb->get_item('forum.topic')
+					->param('id', $this->_category->id)
+					->param('topic', $this->_tpl->topic->id);
+
 				$this->_breadcrumb->get_item('forum.topic')->set_title($this->_tpl->topic->title);
 			}
 
@@ -195,6 +205,7 @@ class Controller_Forums extends Controller_Fusion_Site {
 
 			$values = Arr::extract($_POST, $keys);
 			$topic = $this->_category->create_topic($values);
+			Plug::fire('forum.parse', [$values['content'], $topic->id, 'topic']);
 
 			RD::set(RD::SUCCESS, 'Thanks for creating a topic.');
 
@@ -398,6 +409,8 @@ class Controller_Forums extends Controller_Fusion_Site {
 		$values = Arr::extract($_POST, array('content'));
 
 		try {
+			Plug::fire('forum.parse', [$values['content'], $this->request->param('topic'), 'reply']);
+
 			$reply = $this->_category
 				->topic($this->request->param('topic'))
 				->create_reply($values);
@@ -425,7 +438,6 @@ class Controller_Forums extends Controller_Fusion_Site {
 		catch(Quill_Exception_Reply_Status $e)
 		{
 			$error = $e->getMessage();
-			die();
 			RD::set(RD::ERROR, $error);
 		}
 

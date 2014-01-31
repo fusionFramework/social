@@ -26,6 +26,7 @@ class View_News_Index extends Views {
 		{
 			foreach($this->posts as $post)
 			{
+				Plug::listen('news.render', [$post]);
 				$posts[] = array(
 					'date' => $post->created_at,
 					'title' => $post->title,
