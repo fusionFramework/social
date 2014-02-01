@@ -147,7 +147,7 @@ class Model_Message extends ORM {
 
 		// Log the fact that a user created a new reply and notify the receiver
 		Fusion::$log->create('message.reply', 'social', '<b>:username</b> replied in a discussion to <i>:other_username</i>', array(
-			'alias_id' => $post->id,
+			':message_id' => $post->id,
 			':user' => $sender->id,
 			':username' => $sender->username,
 			':other_username' => $this->{$other_user_role}->username,
