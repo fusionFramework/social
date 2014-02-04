@@ -35,7 +35,7 @@ class View_Forum_Topic extends View_Forum {
 
 			$replies[0] = array(
 				'author' => $this->topic->user->username,
-				'author_profile' => Route::url('user.profile', array('id' => $this->topic->user->id), true),
+				'author_profile' => Route::url('user.profile', array('name' => $this->topic->user->username), true),
 				'edit' => (($allow['topics']['edit'] && Fusion::$user != null && $this->topic->user->id == Fusion::$user->id) || Fusion::$user->hasAccess('forum.topic.edit')),
 				'edit_link' => Route::url('forum.topic.edit', array(
 					'id' => $this->topic->category_id,
@@ -74,7 +74,7 @@ class View_Forum_Topic extends View_Forum {
 					),
 					'delete_type' => 'reply',
 					'content' => $reply->content,
-					'author_profile' => Route::url('user.profile', array('id' => $reply->user->id), true)
+					'author_profile' => Route::url('user.profile', array('name' => $reply->user->username), true),
 				);
 			}
 		}

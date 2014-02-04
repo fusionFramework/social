@@ -80,7 +80,7 @@ class View_Message_Index extends Views {
 
 				$replies[] = array(
 					'avatar' => $reply->sender->avatar_img(),
-					'profile_link' => Route::url('user.profile', array('id' => $reply->sender_id)),
+					'profile_link' => Route::url('user.profile', array('name' => $reply->sender->username)),
 					'username' => $reply->sender->username,
 					'time' => $reply->created_at,
 					'formatted_time' => Fusion::date($reply->created_at),

@@ -43,7 +43,7 @@ class View_News_Post extends Views {
 					'content' => nl2br($reply->content),
 					'owned' => (Fusion::$user != null && $reply->user->id == Fusion::$user->id),
 					'user' => $reply->user->username,
-					'link' => Route::url('user.profile', array('id' => $reply->user->id), true),
+					'link' => Route::url('user.profile', array('name' => $reply->user->username), true),
 					'id' => $reply->id
 				);
 			}

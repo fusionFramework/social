@@ -8,6 +8,16 @@
  * @copyright  (c) happydemon.org
  */
 class Model_Quill_Topic extends Kohana_Model_Quill_Topic {
+
+	public function filters()
+	{
+		return array(
+			'content' => array(
+				array('Security::xss_clean'),
+			),
+		);
+	}
+
 	use Formo_ORM;
 
 	protected $_primary_val = 'title';

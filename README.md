@@ -1,6 +1,10 @@
 # Fusion Framework Social module
 
-Contains forums, private chat and news.
+Contains the following features:
+
+ - forums
+ - private chat
+ - news
 
 ## Tasks
 
@@ -8,10 +12,12 @@ Contains forums, private chat and news.
 
 ## Notifications
 
-*mail.message*
+**mail.message**
 When creating a new message
+
 Variables: :username(sender), :other_username(receiver), :message_id
 
-*mail.reply*
+**mail.reply**
 When relpying to a message
+
 Variables: :username(sender), :other_username(receiver), :message_id

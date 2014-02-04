@@ -42,4 +42,13 @@ class Model_Message_Post extends ORM {
 		);
 	}
 
+	public function filters()
+	{
+		return array(
+			'content' => array(
+				array('Security::xss_clean'),
+			),
+		);
+	}
+
 } // End Message_Post model
