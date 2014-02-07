@@ -1,13 +1,14 @@
 <?php defined('SYSPATH') OR die('No direct script access.');
 
-class View_Forum_Reply_Edit extends View_Forum {
-	/**
-	 * @var string URL to submit the form to
-	 */
-	public $submit_link = '';
+/**
+ * Forum edit reply View
+ *
+ * @package    fusionFramework/social
+ * @category   View
+ * @author     Maxim Kerstens
+ * @copyright  (c) Maxim Kerstens
+ */
+class View_Forum_Reply_Edit extends Fusion_View_Forum_Reply_Edit
+{
 
-	/**
-	 * @var Model_Quill_Reply
-	 */
-	public $reply = null;
 }

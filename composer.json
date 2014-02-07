@@ -19,6 +19,6 @@
 	],
 	"require": {
 		"fusionFramework/app": "*",
-		"happydemon/quill": "*"
+		"happydemon/quill": "1.*"
 	}
 }
